@@ -5,7 +5,7 @@ module.exports = {
       sass: {
         // @/ is an alias to src/
         // so this assumes you have a file named `src/variables.scss`
-        data: `@import "./src/lib/hotcss/px2rem.scss";`
+        data: `@import "./src/assets/style/main.scss";`
       }
     }
   }

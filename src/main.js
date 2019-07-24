@@ -5,8 +5,13 @@ import store from "./store";
 import "./plugins/iview.js";
 //hotcss 移动端布局解决方案
 import "./lib/hotcss/hotcss.js";
+//vue官方推荐的vue校验
+import VeeValidate from "vee-validate";
+
 
 Vue.config.productionTip = false;
+
+Vue.use(VeeValidate);
 
 new Vue({
   router,
