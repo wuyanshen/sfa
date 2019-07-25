@@ -1,3 +1,6 @@
+技术栈:
+mint-ui 饿了么移动端ui  npm install mint-ui --save
+axios 一个小的ajax库    npm install axios --save
 # sfa_vue
 
 ## Project setup

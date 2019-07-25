@@ -12,17 +12,17 @@
       <div class="input-group" :class="{active: act_index ===1, error: errors.has('cno')}">
         <label for="cm_code">公司编号:</label>
         <input name="cno" v-validate="{required: true,max: 6,min:4}" @focus="act_index=1" type="number" id="cm_code"
-          v-model="cm_code">
+          v-model="cm_code" />
       </div>
       <div class="input-group" :class="{active: act_index ===2, error: errors.has('pno')}">
         <label for="PNO">员工编号:</label>
         <input name="pno" v-validate="{required: true,max: 6,min:4}" @focus="act_index=2" type="number" id="PNO"
-          v-model="PNO">
+          v-model="PNO" />
       </div>
       <div class="input-group" :class="{active: act_index ===3, error: errors.has('pwd')}">
         <label for="Passwd">用户密码:</label>
         <input name="pwd" v-validate="{required: true,max: 21,min:6}" @focus="act_index=3" type="password" id="Passwd"
-          v-model="passwd">
+          v-model="passwd" />
       </div>
       <!-- 记住密码, 自动登录 -->
       <div class="ck-row">
@@ -38,23 +38,34 @@
     </div>
     <!-- 登录按钮 -->
     <div class="btn-wrap">
-      <p>登录</p>
+      <p @click="loginBtnClick">登录</p>
     </div>
   </div>
 </template>
 <script>
-  import '../assets/font/iconfont.css'
+  import "../assets/font/iconfont.css";
+  import {
+    Indicator,
+    Toast
+  } from 'mint-ui';
+  import axios from 'axios';
+
   export default {
     name: "login",
     data() {
       return {
         act_index: 1,
-        cm_code: '',
-        passwd: '',
-        PNO: '',
+        cm_code: "",
+        passwd: "",
+        PNO: "",
         rememb: false,
         autologin: false
       };
+    },
+    mounted() {
+      //VeeValidate在页面挂载完毕后强制进行校验,避免没校验还能点登录
+      //已经将$validator注入到vue实例中
+      this.$validator.validate();
     },
     methods: {
       autoLoginSet() {
@@ -66,6 +77,48 @@
       remembSet() {
         this.rememb = !this.rememb;
         this.rememb || (this.autologin = false);
+      },
+      loginBtnClick() {
+        //判断当前是否校验全部通过
+        if (this.errors.any()) {
+          return;
+        }
+        //弹出等待遮罩层,防止二次提交
+        Indicator.open('正在登录...');
+        //发送ajax请求 axios一个小的ajax请求库
+        // 模拟登录
+        // setTimeout(() => {
+        //   Indicator.close();
+        // }, 3000);
+        axios.post('/api/login', {
+          cm_code: this.cm_code,
+          PNO: this.PNO,
+          Passwd: this.passwd
+        }, {}).then(res => {
+
+          if (res.data.code == 1) {
+            //登录成功
+            //记住用户名密码使用localstorage移动端支持localstorage
+            localStorage.setItem("Login_data", JSON.stringify({
+              rememb: this.rememb,
+              autologin: this.autologin,
+              PNO: this.rememb ? this.PNO : "",
+              cm_code: this.rememb ? this.cm_code : "",
+              Passwd: this.rememb ? this.passwd : "",
+            }));
+            //跳转到Home页面
+            this.$router.push("/home");
+          } else {
+            Toast({
+              message: '用户名密码不正确,登录失败',
+              duration: 2000
+            });
+          }
+          Indicator.close();
+        }).catch(e => {
+          console.log('登录失败' + e);
+          Indicator.close();
+        });
       }
     }
   };
@@ -80,9 +133,8 @@
     height: px2rem(36);
     padding: px2rem(148-36-44) 0 px2rem(80) 0;
     line-height: px2rem(36);
-    color: #fff
+    color: #fff;
   }
-
 
   @mixin login_wrap {
     width: px2rem(600);
