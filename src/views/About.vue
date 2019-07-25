@@ -5,8 +5,8 @@
 </template>
 
 <style lang="scss" scoped>
-h1 {
-  width: px2rem(375);
-  background-color: #f00;
-}
+  h1 {
+    width: px2rem(375);
+    background-color: #f00;
+  }
 </style>

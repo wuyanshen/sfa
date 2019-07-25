@@ -1,28 +1,30 @@
 <style scoped>
-.layout {
-  /* border: 1px solid #d7dde4; */
-  background: #f5f7f9;
-  position: relative;
-  /* border-radius: 4px; */
-  overflow: hidden;
-}
-.layout-logo {
-  color: #fff;
-  font-size: 28px;
-  height: 30px;
-  line-height: 30px;
-  background: #5b6270;
-  border-radius: 3px;
-  float: left;
-  position: relative;
-  top: 15px;
-  left: 20px;
-}
-.layout-nav {
-  width: 420px;
-  margin: 0 auto;
-  margin-right: 20px;
-}
+  .layout {
+    /* border: 1px solid #d7dde4; */
+    background: #f5f7f9;
+    position: relative;
+    /* border-radius: 4px; */
+    overflow: hidden;
+  }
+
+  .layout-logo {
+    color: #fff;
+    font-size: 28px;
+    height: 30px;
+    line-height: 30px;
+    background: #5b6270;
+    border-radius: 3px;
+    float: left;
+    position: relative;
+    top: 15px;
+    left: 20px;
+  }
+
+  .layout-nav {
+    width: 420px;
+    margin: 0 auto;
+    margin-right: 20px;
+  }
 </style>
 <template>
   <div class="layout">
@@ -32,20 +34,20 @@
           <div class="layout-logo">测试管理平台</div>
           <div class="layout-nav">
             <MenuItem name="1">
-              <Icon type="ios-navigate"></Icon>
-              Item 1
+            <Icon type="ios-navigate"></Icon>
+            Item 1
             </MenuItem>
             <MenuItem name="2">
-              <Icon type="ios-keypad"></Icon>
-              Item 2
+            <Icon type="ios-keypad"></Icon>
+            Item 2
             </MenuItem>
             <MenuItem name="3">
-              <Icon type="ios-analytics"></Icon>
-              Item 3
+            <Icon type="ios-analytics"></Icon>
+            Item 3
             </MenuItem>
             <MenuItem name="4">
-              <Icon type="ios-paper"></Icon>
-              Item 4
+            <Icon type="ios-paper"></Icon>
+            Item 4
             </MenuItem>
           </div>
         </Menu>
@@ -86,9 +88,7 @@
             <BreadcrumbItem>Components</BreadcrumbItem>
             <BreadcrumbItem>Layout</BreadcrumbItem>
           </Breadcrumb>
-          <Content
-            :style="{ padding: '24px', minHeight: '280px', background: '#fff' }"
-          >
+          <Content :style="{ padding: '24px', minHeight: '280px', background: '#fff' }">
             Content
           </Content>
         </Layout>
@@ -97,5 +97,5 @@
   </div>
 </template>
 <script>
-export default {};
+  export default {};
 </script>
