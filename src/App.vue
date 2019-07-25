@@ -5,11 +5,11 @@
 </template>
 
 <script>
-import "./lib/common.css";
+  import "./lib/common.css";
 
-export default {
-  name: "app"
-};
+  export default {
+    name: "app"
+  };
 </script>
 
 <style lang="scss"></style>
