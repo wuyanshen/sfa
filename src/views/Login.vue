@@ -49,6 +49,9 @@
     Toast
   } from 'mint-ui';
   import axios from 'axios';
+  import {
+    mapMutations
+  } from 'vuex';
 
   export default {
     name: "login",
@@ -63,11 +66,28 @@
       };
     },
     mounted() {
+      let data = JSON.parse(localStorage.getItem("Login_data"));
+      console.log("localStorage中的值是：", data)
+      if (data) {
+        this.cm_code = data.cm_code;
+        this.PNO = data.PNO;
+        this.passwd = data.Passwd;
+        this.autologin = data.autologin;
+        this.rememb = data.rememb;
+      }
+
       //VeeValidate在页面挂载完毕后强制进行校验,避免没校验还能点登录
       //已经将$validator注入到vue实例中
       this.$validator.validate();
+
+      //自动登录
+      if (this.autologin) {
+        this.loginBtnClick();
+      }
+
     },
     methods: {
+      ...mapMutations(['initUser']),
       autoLoginSet() {
         //设置当前的autoLogin为true或者false
         this.autologin = !this.autologin;
@@ -99,13 +119,22 @@
           if (res.data.code == 1) {
             //登录成功
             //记住用户名密码使用localstorage移动端支持localstorage
-            localStorage.setItem("Login_data", JSON.stringify({
-              rememb: this.rememb,
-              autologin: this.autologin,
-              PNO: this.rememb ? this.PNO : "",
-              cm_code: this.rememb ? this.cm_code : "",
-              Passwd: this.rememb ? this.passwd : "",
-            }));
+            // localStorage.setItem("Login_data", JSON.stringify({
+            //   rememb: this.rememb,
+            //   autologin: this.autologin,
+            //   PNO: this.rememb ? this.PNO : "",
+            //   cm_code: this.rememb ? this.cm_code : "",
+            //   Passwd: this.rememb ? this.passwd : "",
+            // }));
+
+
+            //把当前登录的用户信息放到sessionStorage中
+            sessionStorage.setItem("LoginUser", JSON.stringify(res.data.user));
+
+            //把当前登录的用户信息放到 Vuex
+            // this.$store.commit('initUser', res.data.user);
+            this.initUser(res.data.user);
+
             //跳转到Home页面
             this.$router.push("/home");
           } else {
