@@ -195,7 +195,10 @@
           width: px2rem(190);
           height: px2rem(190);
           margin: 0 auto;
+          background-repeat: no-repeat;
           background: url(../assets/logo.png);
+          background-position: px2rem(-45) px2rem(-35);
+          background-size: px2rem(280) px2rem(280);
         }
       }
 
