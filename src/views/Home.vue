@@ -47,7 +47,7 @@
     created() {
       service.getUserProgress()
         .then(res => {
-          this.monthSalePercent = res.data.monthPercent;
+          this.monthSalePercent = parseInt(res.data.monthPercent * 100);
           this.shops = res.data.totalShops;
         })
     }

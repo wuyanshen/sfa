@@ -24,6 +24,6 @@ export default {
         axios.interceptors.request.eject(axiosInstance);
     },
     getUserProgress() {
-        return axios.post('/api/getUserProgress');
+        return axios.get('/api/getUserProgress');
     }
 }
