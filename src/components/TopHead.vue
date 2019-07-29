@@ -1,6 +1,6 @@
 <template>
     <div class="tophead">
-        <div class="th-l"><i class="icon iconfont icon-icon"></i></div>
+        <div class="th-l" @click="backAction"><i class="icon iconfont icon-icon"></i></div>
         <div class="th-title">{{title}}</div>
         <div class="th-r">
             <slot name="r">右侧插槽</slot>
@@ -20,6 +20,15 @@
         },
         components: {
 
+        },
+        methods: {
+            backAction() {
+                if (this.backurl) {
+                    this.$router.push(this.backurl);
+                } else {
+                    this.$router.go(-1);
+                }
+            }
         }
     }
 </script>
@@ -32,15 +41,15 @@
         line-height: $th;
         color: #fff;
         font-size: $text-size-imp;
-        background-color: red;
-
-        .th_l {
-            padding-left: px2rem(25);
-        }
+        background-color: $act-color;
 
         .th_title {
             text-align: center;
-            flex: 1 1 auto;
+            // flex: 1 1 auto;
+        }
+
+        .th-l {
+            padding-left: px2rem(25);
         }
 
         .th-r {
@@ -48,7 +57,8 @@
         }
 
         .icon::before {
-            font-size: $text-size;
+            font-size: px2rem(38);
+            color: #fff;
         }
 
     }

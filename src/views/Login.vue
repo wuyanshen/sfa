@@ -53,6 +53,7 @@
     mapMutations
   } from 'vuex';
 
+  import service from '../service/index'
   export default {
     name: "login",
     data() {
@@ -110,7 +111,7 @@
         // setTimeout(() => {
         //   Indicator.close();
         // }, 3000);
-        axios.post('/api/login', {
+        service.login({
           cm_code: this.cm_code,
           PNO: this.PNO,
           Passwd: this.passwd
@@ -130,6 +131,8 @@
 
             //把当前登录的用户信息放到sessionStorage中
             sessionStorage.setItem("LoginUser", JSON.stringify(res.data.user));
+            //把token放在sessionStorage中
+            sessionStorage.setItem("LoginToken", JSON.stringify(res.data.token));
 
             //把当前登录的用户信息放到 Vuex
             // this.$store.commit('initUser', res.data.user);
