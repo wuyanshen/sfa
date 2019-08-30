@@ -1,6 +1,26 @@
-技术栈:
-mint-ui 饿了么移动端ui  npm install mint-ui --save
-axios 一个小的ajax库    npm install axios --save
+### 技术栈:
+
+    mint-ui 饿了么移动端ui 
+    
+    npm install mint-ui --save
+
+    axios 一个小的ajax库
+    
+    npm install axios --save
+
+### api接口
+    
+使用去哪儿网的在线API接口：[Yapi](http://yapi.demo.qunar.com)
+
+### 登录
+
+    公司编号：666666
+
+    员工编号：888888
+
+    用户密码：123123
+
+
 # sfa_vue
 
 ## Project setup
