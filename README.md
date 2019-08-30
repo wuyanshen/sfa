@@ -1,3 +1,7 @@
+### Azure devOps
+
+[![Build Status](https://dev.azure.com/wuyanshen2012/sfa/_apis/build/status/wuyanshen.sfa?branchName=master)](https://dev.azure.com/wuyanshen2012/sfa/_build/latest?definitionId=1&branchName=master)
+
 ### 技术栈:
 
     mint-ui 饿了么移动端ui 
