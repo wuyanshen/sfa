@@ -10,10 +10,10 @@ pool:
   vmImage: 'ubuntu-latest'
 
 steps:
-- task: NodeTool@0
-  inputs:
-    versionSpec: '10.x'
-  displayName: 'Install Node.js'
+#- task: NodeTool@0
+#  inputs:
+#    versionSpec: '10.x'
+#  displayName: 'Install Node.js'
 
 - script: |
     npm install
@@ -21,11 +21,10 @@ steps:
   displayName: 'npm install and build'
 
 
-
 - task: CopyFiles@2
   inputs:
     SourceFolder: '$(Build.SourcesDirectory)'
-    Contents: '**\dist\**'
+    Contents: 'dist\**'
     TargetFolder: '$(Build.ArtifactStagingDirectory)'
 
 - task: PublishBuildArtifacts@1
