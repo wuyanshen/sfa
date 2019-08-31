@@ -1,6 +1,6 @@
 <template>
   <div class="login">
-    <h1>欢迎登陆XXXX系统</h1>
+    <h1>欢迎登陆sfa系统</h1>
     <div class="top_hat"></div>
     <!-- 登录框 -->
     <div class="login-box">
