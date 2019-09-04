@@ -25,37 +25,26 @@
     用户密码：123123
 
 
-# sfa_vue
+### 安装项目
 
-## Project setup
-```
-npm install
-```
+    npm install 或者 yarn install
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+### 启动项目
 
-### Compiles and minifies for production
+    npm run serve
+
+
+### 编译项目
 ```
 npm run build
 ```
 
-### Run your tests
-```
-npm run test
-```
-
-### Lints and fixes files
+### 使用eslint修复代码错误
 ```
 npm run lint
 ```
 
-### Run your unit tests
+### 运行单元测试
 ```
 npm run test:unit
 ```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
